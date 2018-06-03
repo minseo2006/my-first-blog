@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+	<!-- 이전페이지가 존재하는지 확인 -->
+	{% if previousPage != -1 %}
+		<a href="?index={{previousPage}}">이전페이지가기</a>
+	{% endif %}
+	{% if nextPage != -1 %}
+		<!--GET : URL끝에 ?키=값&키=값 형태로 보내는 방식  -->
+		<a href="?index={{nextPage}}">다음페이지가기</a>
+	{% endif %}
+	<table width=80%>
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th> 
+		</tr>
+		{% for obj in data %}
+			<tr>
+				<td>{{obj.id}}</td>
+				<td><a href="{% url 'blog:detail' obj.id %}"> {{obj.headline}}</a> </td>
+				<td>{{obj.author.username}}</td>
+				<td>{{obj.pub_date}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<a href="{% url 'blog:posting' %}">글쓰기</a>
+	
+{% endblock %}

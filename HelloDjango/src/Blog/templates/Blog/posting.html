@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+	<input type="file" id='images' name='images' accept="image/gif,image/jpeg" multiple />
+	<input type="file" id='files' name='files' multiple />
+	<input type="submit" value="글쓰기" />
+
+</form>
+
+
+
+{% endblock %}

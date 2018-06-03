@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+	{%if error %}<!-- 'error'라는 변수에 값이 존재하는가? -->
+	<h1>{{error}}</h1>
+	{%endif %}
+	<form action="" method="post">
+		{% csrf_token %}
+		<!-- form.as_p 아니면 form.as_table -->
+		<table>
+			{{form.as_table}}
+		</table>
+		<input type="submit" value="제출"/>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+

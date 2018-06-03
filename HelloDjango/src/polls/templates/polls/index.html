@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>투표 목록</title>
+</head>
+<body>
+	<!-- { %if request.session.loginstate == True % } -->
+	{% if user.is_authenticated %}
+		<p>{{ user.username }}님 환영합니다!</p>
+		<a href="{% url 'customuser:logout' %}">로그아웃</a>
+	{%else%}
+		<a href="{% url 'customuser:sign' %}">회원가입</a>
+		<a href="{% url 'customuser:login' %}">로그인</a>
+	{%endif%}
+	<ul>
+		{% for item in data %}
+			<li>
+				<a href="{% url 'polls:detail' item.id  %}">{{ item.question_text }} - {{item.customuser.id}} </a>                            
+			</li>
+		{% endfor %}
+	</ul>
+	<!-- 질문 등록 -->
+	{% if request.session.loginstate == True %}
+	<a href="{% url 'polls:registerQ' %}">질문 등록</a>
+	{% endif %}
+	<!-- 검색 창 -->
+	<form action="{% url 'polls:search' %}" method="get">
+		<select name = 'type'>
+			<option value = 0>질문 제목</option>
+			<option value = 1>글쓴이</option>
+			<option value = 2>투표 수</option>
+		</select>
+		<input type="text" name="content" value='{{content}}' />
+		<input type="submit" value="검색" />
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+

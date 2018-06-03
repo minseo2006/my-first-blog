@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ data.question_text }} 결과</title>
+</head>
+<body>
+	<h1>{{ data.question_text }}</h1>
+	<ul>
+		{% for item in data.choice_set.all %}
+			<li>{{ item.choice_text }} 투표 수 : {{ item.votes }}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

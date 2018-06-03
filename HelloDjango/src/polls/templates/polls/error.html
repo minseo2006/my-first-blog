@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>에러 페이지</title>
+</head>
+<body>
+	{%if error %}
+		<p>{{error}}</p>
+	{% else %}
+		<p>잘못된 접근입니다.</p>
+	{%endif  %}
+	{% if mainurl %}
+	<a href="{{ mainurl }}">메인페이지로 가기</a>
+	{% else %}
+	<a href="{% url 'polls:index' %}">메인페이지로 가기</a>
+	{% endif %}
+</body>
+</html>

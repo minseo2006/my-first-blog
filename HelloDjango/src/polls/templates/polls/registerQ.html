@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>질문 등록</title>
+</head>
+<body>
+	{%if error_message %} <!-- if error_message != None -->
+	<p>{{error_message}}</p>
+	{% endif %}
+	<!-- form에 enctype="multipart/form-data" 설정을 해야
+	파일들을 전송할 수 있음-->
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<!-- form.as_p : <p></p> 태그 안에 입력양식 작성 
+		form.as_table  : <table></table> 태크 안에 기입 테이블 구현-->
+		<table>
+			{{form.as_table}}
+		</table>
+		<input type="submit" value="질문 등록">
+	</form>
+</body>
+</html>
